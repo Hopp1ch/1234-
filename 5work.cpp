@@ -28,7 +28,7 @@ int main() {
 	}
 	if (operation == 4) {
 		if (Number_Two == 0) {
-			cout << "На ноль делить нельзя повторите еще раз" << Number_One / Number_Two << endl;
+			cout << "На ноль делить нельзя повторите еще раз" << endl;
 			return 0;
 		}
 		else {
@@ -37,7 +37,7 @@ int main() {
 	}
 	if (operation == 5) {
 		if (Number_Two == 0) {
-			cout << "На ноль делить нельзя повторите еще раз" << Number_One + Number_Two << endl;
+			cout << "На ноль делить нельзя повторите еще раз" << endl;
 			return 0;
 		}
 		else {
