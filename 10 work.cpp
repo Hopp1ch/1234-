@@ -37,7 +37,7 @@ int main() {
 				}
 				bool correctguess = false;
 				if (!found1 && userguess == num1) {
-					found1=true;
+					found1 = true;
 					guessnum++;
 					correctguess = true;
 				}
@@ -55,7 +55,7 @@ int main() {
 					cout << "[+] Вы угадали число!\n";
 				}
 				else {
-					cout<<"[-] Число не угадано\n";
+					cout << "[-] Число не угадано\n";
 				}
 				popitki--;
 				cout << endl;
@@ -70,17 +70,15 @@ int main() {
 			cout << endl;
 			break;
 		}
-		if (menu==2) {
+		if (menu == 2) {
 			cout << "Exit from programm....\n";
 			exitmenu = true;
-			break;
 		}
 		else {
 			cout << "Wrong choice! Try again.\n";
 			cout << endl;
-			break;
 		}
-	}			
-	
+	}
+
 	return 0;
 }
