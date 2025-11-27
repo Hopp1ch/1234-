@@ -5,51 +5,55 @@ int main() {
 	cout << "[ + ] Программа - “Геометрические фигуры\n";
 	cout << "[1] Линия\n";
 	cout << "[2] Выход\n";
-	cout << "[+] Выберите фигуру : ";
-	int choice;
-	cin >> choice;
-	int choicetype;
+	bool exitline = false;
 	bool exit = false;
 	do {
+		cout << "[+] Выберите действие: ";
+		int choice;
+		cin >> choice;
 		switch (choice) {
 		case 1:
 			system("cls");
-			cout << "Фигура: 'Линия'";
+			cout << "Фигура: 'Линия'\n";
 			cout << "[1] Горизонтальная\n";
 			cout << "[2] Вертикальная\n";
-			bool exitline = false;
-			do{
+			do {
+				int choicetype;
 				cin >> choicetype;
-        if(choicetype==1){
-					cout << "Длина линии: \n";
+				if (choicetype == 1) {
+					cout << "Длина линии: ";
 					int length;
 					cin >> length;
-					cout << "Текстура линии: \n";
+					cout << "Текстура линии: ";
 					string texture;
 					cin >> texture;
-					while (length) {
-						cout << "Результат:\n";
+					cout << "Результат:\n";
+					while (length>=0) {
 						cout << texture;
+						length -= 1;
 					}
-          exitline = true;
-        }
-				if(choicetype==2){
-					cout << "Длина линии: \n";
+					cout << endl;
+					exitline = true;
+				}
+				else if (choicetype == 2) {
+					cout << "Длина линии: ";
 					int length;
 					cin >> length;
-					cout << "Текстура линии: \n";
+					cout << "Текстура линии: ";
 					string texture;
 					cin >> texture;
+					cout << "Результат:\n";
 					while (length) {
-						cout << "Результат:\n";
 						cout << texture << endl;
+						length -= 1;
 					}
+					cout << endl;
 					exitline = true;
-        }
-				else{
+				}
+				else {
 					cout << "Нет такого значения! Повторите попытку\n";
 				}
-				
+
 			} while (!exitline);
 		case 2:
 			cout << "Выход из программы......\n";
