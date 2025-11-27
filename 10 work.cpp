@@ -3,7 +3,6 @@
 using namespace std;
 int main() {
 	setlocale(0, "");
-	srand = (time(NULL));
 	int menu;
 	bool exitmenu = false;
 	while (!exitmenu) {
@@ -13,6 +12,8 @@ int main() {
 		cout << "[-] Выберите пункт: ";
 		cin >> menu;
 		if (menu == 1) {
+			cout << "Start game\n";
+			srand(time(NULL));
 			int num1, num2, num3;
 			num1 = rand() % 10 + 1;
 			do {
@@ -23,7 +24,7 @@ int main() {
 			} while (num3 == num2 || num3 == num1);
 			int popitki = 5;
 			int guessnum = 0;
-			int guessnumcount = 0;
+			bool found1 = false, found2 = false, found3 = false;
 			while (popitki > 0 && guessnum < 3) {
 				cout << "[+] Угаданных чисел: [ " << guessnum << " / 3 ]\n";
 				cout << "[+] Попыток: [ " << popitki << " ]\n";
@@ -34,8 +35,50 @@ int main() {
 					cout << "[!] Ошибка! Число должно быть от 1 до 10.\n";
 					continue;
 				}
-				bool
+				bool correctguess = false;
+				if (!found1 && userguess == num1) {
+					found1=true;
+					guessnum++;
+					correctguess = true;
+				}
+				if (!found2 && userguess == num2) {
+					found2 = true;
+					guessnum++;
+					correctguess = true;
+				}
+				if (!found3 && userguess == num3) {
+					found3 = true;
+					guessnum++;
+					correctguess = true;
+				}
+				if (correctguess) {
+					cout << "[+] Вы угадали число!\n";
+				}
+				else {
+					cout<<"[-] Число не угадано\n";
+				}
+				popitki--;
+				cout << endl;
 			}
+			if (guessnum == 3) {
+				cout << "Поздравляем! Вы угадали все 3 числа!\n";
+			}
+			else {
+				cout << "К сожалению, вы не угадали все числа.\n";
+				cout << "Загаданные числа были: " << num1 << ", " << num2 << ", " << num3 << endl;
+			}
+			cout << endl;
+			break;
+		}
+		if (menu==2) {
+			cout << "Exit from programm....\n";
+			exitmenu = true;
+			break;
+		}
+		else {
+			cout << "Wrong choice! Try again.\n";
+			cout << endl;
+			break;
 		}
 	}			
 	
