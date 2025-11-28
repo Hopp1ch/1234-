@@ -18,7 +18,7 @@ int main() {
 			cout << "[1] Горизонтальная\n";
 			cout << "[2] Вертикальная\n";
 			bool exitline = false;
-			do{
+			do {
 				cin >> choicetype;
 
 				switch (choicetype) {
@@ -29,9 +29,10 @@ int main() {
 					cout << "Текстура линии: \n";
 					string texture;
 					cin >> texture;
+					cout << "Результат:\n";
 					while (length) {
-						cout << "Результат:\n";
 						cout << texture;
+						length -= 1;
 					}
 					exitline = true;
 					break;
@@ -42,9 +43,10 @@ int main() {
 					cout << "Текстура линии: \n";
 					string texture;
 					cin >> texture;
+					cout << "Результат:\n";
 					while (length) {
-						cout << "Результат:\n";
 						cout << texture << endl;
+						length -= 1;
 					}
 					exitline = true;
 					break;
@@ -52,7 +54,7 @@ int main() {
 					cout << "Нет такого значения! Повторите попытку\n";
 					break;
 				}
-				
+
 			} while (!exitline);
 		case 2:
 			cout << "Выход из программы......\n";
