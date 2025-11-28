@@ -30,7 +30,7 @@ int main() {
 					string texture;
 					cin >> texture;
 					cout << "Результат:\n";
-					while (length) {
+					while (length>=0) {
 						cout << texture;
 						length -= 1;
 					}
@@ -44,7 +44,7 @@ int main() {
 					string texture;
 					cin >> texture;
 					cout << "Результат:\n";
-					while (length) {
+					while (length>=0) {
 						cout << texture << endl;
 						length -= 1;
 					}
