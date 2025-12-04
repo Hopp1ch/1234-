@@ -74,6 +74,7 @@ int main() {
 		break;
 	default:
 		cout << "Неправильно введено значение месяца" << endl;
+		break;
 	}
 	cout << "Выберите день месяца: ";
 	cin >> day;
@@ -177,6 +178,7 @@ int main() {
 		break;
 	default:
 		cout << "Такого дня нет" << endl;
+		break;
 	}
 	cout << Suf_Day << Suf_Month << endl;
 
