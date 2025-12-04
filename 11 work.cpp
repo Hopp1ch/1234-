@@ -12,7 +12,8 @@ int main() {
 	bool exit = false;
 	do {
 		switch (choice) {
-		case 1:
+		case 1: {
+
 			system("cls");
 			cout << "Фигура: 'Линия'";
 			cout << "[1] Горизонтальная\n";
@@ -22,7 +23,7 @@ int main() {
 				cin >> choicetype;
 
 				switch (choicetype) {
-				case 1:
+				case 1: {
 					cout << "Длина линии: \n";
 					int length;
 					cin >> length;
@@ -30,13 +31,14 @@ int main() {
 					string texture;
 					cin >> texture;
 					cout << "Результат:\n";
-					while (length>=0) {
+					while (length) {
 						cout << texture;
 						length -= 1;
 					}
 					exitline = true;
 					break;
-				case 2:
+				}
+				case 2: {
 					cout << "Длина линии: \n";
 					int length;
 					cin >> length;
@@ -44,25 +46,32 @@ int main() {
 					string texture;
 					cin >> texture;
 					cout << "Результат:\n";
-					while (length>=0) {
+					while (length) {
 						cout << texture << endl;
 						length -= 1;
 					}
 					exitline = true;
 					break;
+				}
 				default:
 					cout << "Нет такого значения! Повторите попытку\n";
 					break;
 				}
 
 			} while (!exitline);
-		case 2:
+			break;
+		}
+		case 2: {
 			cout << "Выход из программы......\n";
 			exit = true;
 			break;
-		default:
+
+		}
+		default: {
 			cout << "Нет такого значения! Повторите попытку\n";
 			break;
+
+		}
 		}
 	} while (!exit);
 	return 0;
