@@ -409,12 +409,15 @@ int main() {
 					cin >> PlayerName;
 					cout << "Имя изменено на: " << PlayerName << "\n";
 				}
-				if (SettingChoice == 1) {
-					cout << "Введите новое имя: ";
-					cin >> PlayerName;
-					cout << "Имя изменено на: " << PlayerName << "\n";
+				else if (SettingChoice == 2) {
+					cout << "Выберите кол-во вопросов (8-10-12): ";
+					cin >> QuestionsCount;
+					if(QuestionsCount!=8&&QuestionsCount!=10&&QuestionsCount!=12){
+					    cout<<"Можно только 8, 10 или 12! Установлено 8:";
+					    QuestionsCount=8;
+					}
 				}
-				if (SettingChoice == 1) {
+				else if (SettingChoice == 3) {
 					cout << "Выберите цвет (1-белый, 2-зеленый, 3-желтый, 4-синий): ";
 					int ColorChoice;
 					cin >> ColorChoice;
@@ -422,13 +425,28 @@ int main() {
 					else if (ColorChoice == 2) InterfaceColor = "зеленый";
 					else if (ColorChoice == 3) InterfaceColor = "желтый";
 					else if (ColorChoice == 4) InterfaceColor = "синий";
-					else cout<<""
-
+					else cout<<"Неверный выбор!\n";
 				}
-				if (SettingChoice == 4) {
+				else if (SettingChoice == 4) {
 					InSettings == false;
 				}
+				else{
+				    cout<<"Неверный выбор!!!\n";
+				}
+				if (InSettings) {
+					cout << "\nНажмите Enter чтобы продолжить...";
+					cin.ignore();
+					cin.get();
+				}
 			}
+		}
+		else if(MenuChoice==3){
+		    system("cls");
+		    cout<<"=== ПРАВИЛА ИГРЫ ===\n\n";
+		    cout<<"Игрок получает очки за правильный ответ на вопрос\n";
+		    cout<<"Игрок проходит дальше за правильный ответ\n";
+		    cout<<"Игрок теряет жизнь при неправильном ответе.\n";
+
 		}
 	}
 
