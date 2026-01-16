@@ -84,20 +84,24 @@ int main() {
 					for (int column = 0; column != size; column++)
 					{
 						cout << texture;
+						cout << " ";
 					}
 					cout << "\n";
 					for (int column = 0; column != size-2; column++)
 					{
 						cout << texture;
+						cout << " ";
 						for (int column = 0; column != size - 2; column++)
 						{
 							cout << texture;
+							cout << " ";
 						}
 						cout << texture << endl;
 					}
 					for (int column = 0; column != size; column++)
 					{
 						cout << texture;
+						cout << " ";
 					}
 					cout << "\n";
 					exitSquare = true;
@@ -116,13 +120,16 @@ int main() {
 					for (int column = 0; column!=size; ++column)
 					{
 						cout << texture;
+						cout << " ";
 					}
 					cout << "\n";
 					for (int column = 0; column < size-2; ++column)
 					{
 						cout << texture;
+						cout << " ";
 						for (int column = 0; column < size-2; ++column)
 						{
+							cout << " ";
 							cout << " ";
 						}
 						cout << texture<<endl;
@@ -130,6 +137,7 @@ int main() {
 					for (int column = 0; column != size; ++column)
 					{
 						cout << texture;
+						cout << " ";
 					}
 					cout << "\n";
 					exitSquare = true;
