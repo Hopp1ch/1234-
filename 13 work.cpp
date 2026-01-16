@@ -2,7 +2,6 @@
 using namespace std;
 int main() {
 	setlocale(0, "");
-	int pause;
 	bool exit = false;
 	bool exitline = false;
 	bool exitSquare = false;
@@ -38,7 +37,10 @@ int main() {
 					}
 					cout << endl;
 					exitline = true;
-					cin >> pause;
+					cout << "Нажмите для продолжения...";
+					cin.ignore();
+					cin.get();
+					system("cls");
 				}
 				else if (choicetype == 2) {
 				    system("cls");
@@ -53,6 +55,10 @@ int main() {
 					}
 					cout << endl;
 					exitline = true;
+					cout << "Нажмите для продолжения...";
+					cin.ignore();
+					cin.get();
+					system("cls");
 				}
 				else {
 				    system("cls");
@@ -95,6 +101,10 @@ int main() {
 					}
 					cout << "\n";
 					exitSquare = true;
+					cout << "Нажмите для продолжения...";
+					cin.ignore();
+					cin.get();
+					system("cls");
 				}
 		        if(choicetype==2){
 		            system("cls");
@@ -123,7 +133,15 @@ int main() {
 					}
 					cout << "\n";
 					exitSquare = true;
+					cout << "Нажмите для продолжения...";
+					cin.ignore();
+					cin.get();
+					system("cls");
 		        }
+				else {
+					system("cls");
+					cout << "Нет такого значения! Повторите попытку\n";
+				}
 		    }while(!exitSquare);
 		}
 		else if(choice==3){
