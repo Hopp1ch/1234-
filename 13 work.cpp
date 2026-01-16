@@ -2,10 +2,7 @@
 using namespace std;
 int main() {
 	setlocale(0, "");
-	cout << "[+] Программа - “Геометрические фигуры\n\n";
-	cout << "[1] Линия\n";
-	cout << "[2] Квадрат\n";
-	cout << "[3] Выход\n";
+	int pause;
 	bool exit = false;
 	bool exitline = false;
 	bool exitSquare = false;
@@ -15,6 +12,10 @@ int main() {
 	int size;
 	string texture;
 	do {
+		cout << "[+] Программа - “Геометрические фигуры\n\n";
+		cout << "[1] Линия\n";
+		cout << "[2] Квадрат\n";
+		cout << "[3] Выход\n";
 		cout << "[+] Выберите действие: ";
 		cin >> choice;
 		if (choice==1) {
@@ -37,6 +38,7 @@ int main() {
 					}
 					cout << endl;
 					exitline = true;
+					cin >> pause;
 				}
 				else if (choicetype == 2) {
 				    system("cls");
@@ -61,17 +63,66 @@ int main() {
 		}
 		else if(choice==2){
 		    system("cls");
-		    cout<<"Фигура: 'Квадрат\n";
+		    cout<<"Фигура: 'Квадрат'\n";
 		    cout<<"[1] Заполненный\n";
 		    cout<<"[2] Пустой\n";
 		    do{
-		        if(choicetype==1){
+				cin >> choicetype;
+				if (choicetype == 1) {
+					system("cls");
+					cout << "Размер: ";
+					cin >> size;
+					cout << "Текстура: ";
+					cin >> texture;
+					cout << "Результат: \n";
+					for (int column = 0; column != size; column++)
+					{
+						cout << texture;
+					}
+					cout << "\n";
+					for (int column = 0; column != size-2; column++)
+					{
+						cout << texture;
+						for (int column = 0; column != size - 2; column++)
+						{
+							cout << texture;
+						}
+						cout << texture << endl;
+					}
+					for (int column = 0; column != size; column++)
+					{
+						cout << texture;
+					}
+					cout << "\n";
+					exitSquare = true;
+				}
+		        if(choicetype==2){
 		            system("cls");
 		            cout<<"Размер: ";
 		            cin>>size;
 		            cout<<"Текстура: ";
 		            cin>>texture;
-		            cout<<"Результат: ";
+		            cout<<"Результат: \n";
+					for (int column = 0; column!=size; ++column)
+					{
+						cout << texture;
+					}
+					cout << "\n";
+					for (int column = 0; column < size-2; ++column)
+					{
+						cout << texture;
+						for (int column = 0; column < size-2; ++column)
+						{
+							cout << " ";
+						}
+						cout << texture<<endl;
+					}
+					for (int column = 0; column != size; ++column)
+					{
+						cout << texture;
+					}
+					cout << "\n";
+					exitSquare = true;
 		        }
 		    }while(!exitSquare);
 		}
@@ -87,4 +138,5 @@ int main() {
 		}
 	} while (!exit);
 	return 0;
+
 }
