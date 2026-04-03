@@ -57,16 +57,54 @@ int main()
                     char op;
 
                     switch (settings) {
-                        case 1: {
-                            a = rand() % 90 + 10;
-                            b = rand() % 90 + 10;
+                    case 1: {
+                        a = rand() % 90 + 10;
+                        b = rand() % 90 + 10;
+                        op = '+';
+                        ans = a + b;
+                        break;
+                    }
+                    case 2: {
+                        a = rand() % 90 + 10;
+                        b = rand() % 90 + 10;
+                        if (a < b) {
+                            int t = a;
+                            a = b;
+                            b = t;
+                        }
+                        op = '-';
+                        ans = a - b;
+                        break;
+                    }
+                    case 3: {
+                        int opType = rand() % 2;
+                        if (opType == 0) {
+                            a = rand() % 900 + 100;
+                            b = rand() % 900 + 100;
+                            op = '*';
+                            ans = a * b;
+                        }
+                        else {
+                            ans = rand() % 900 + 100;
+                            b = rand() % 900 + 100;
+                            a = ans * b;
+                            op = '/';
+                        }
+                        break;
+                    }
+                    case 4: {
+                        int opType = rand() % 4;
+                        switch (opType) {
+                        case 0: {
+                            a = rand() % 9000 + 1000;
+                            b = rand() % 9000 + 1000;
                             op = '+';
                             ans = a + b;
                             break;
                         }
-                        case 2: {
-                            a = rand() % 90 + 10;
-                            b = rand() % 90 + 10;
+                        case 1: {
+                            a = rand() % 9000 + 1000;
+                            b = rand() % 9000 + 1000;
                             if (a < b) {
                                 int t = a;
                                 a = b;
@@ -76,61 +114,23 @@ int main()
                             ans = a - b;
                             break;
                         }
+                        case 2: {
+                            a = rand() % 9000 + 1000;
+                            b = rand() % 9000 + 1000;
+                            op = '*';
+                            ans = a * b;
+                            break;
+                        }
                         case 3: {
-                            int opType = rand() % 2;
-                            if (opType == 0) {
-                                a = rand() % 900 + 100;
-                                b = rand() % 900 + 100;
-                                op = '*';
-                                ans = a * b;
-                            }
-                            else {
-                                ans = rand() % 900 + 100;
-                                b = rand() % 900 + 100;
-                                a = ans * b;
-                                op = '/';
-                            }
+                            ans = rand() % 9000 + 1000;
+                            b = rand() % 9000 + 1000;
+                            a = ans * b;
+                            op = '/';
                             break;
                         }
-                        case 4: {
-                            int opType = rand() % 4;
-                            switch (opType) {
-                                case 0: {
-                                    a = rand() % 9000 + 1000;
-                                    b = rand() % 9000 + 1000;
-                                    op = '+';
-                                    ans = a + b;
-                                    break;
-                                }
-                                case 1: {
-                                    a = rand() % 9000 + 1000;
-                                    b = rand() % 9000 + 1000;
-                                    if (a < b) {
-                                        int t = a;
-                                        a = b;
-                                        b = t;
-                                    }
-                                    op = '-';
-                                    ans = a - b;
-                                    break;
-                                }
-                                case 2: {
-                                    a = rand() % 9000 + 1000;
-                                    b = rand() % 9000 + 1000;
-                                    op = '*';
-                                    ans = a * b;
-                                    break;
-                                }
-                                case 3: {
-                                    ans = rand() % 9000 + 1000;
-                                    b = rand() % 9000 + 1000;
-                                    a = ans * b;
-                                    op = '/';
-                                    break;
-                                }
-                            }
-                            break;
                         }
+                        break;
+                    }
                     }
 
                     cout << q << ". " << a << " " << op << " " << b << " = ";
@@ -168,19 +168,60 @@ int main()
                 if (leaderCount == 0) {
                     cout << "Таблица лидеров пуста\n";
                 }
-                else{
+                else {
                     for (int i = 0; i < leaderCount - 1; i++) {
                         for (int j = 0; j < leaderCount - i - 1; j++) {
                             if (scores[j] < scores[j + 1]) {
                                 int tempScore = scores[j];
                                 scores[j] = scores[j + 1];
                                 scores[j + 1] = tempScore;
+
+                                int tempCorrect = corrects[j];
+                                corrects[j] = corrects[j + 1];
+                                corrects[j + 1] = tempCorrect;
+
+                                char tempName[50];
+                                int k;
+                                for (k = 0; names[j][k] != '\0'; k++) {
+                                    tempName[k] = names[j][k];
+                                }
+                                tempName[k] = '\0';
+
+                                for (k = 0; names[j + 1][k] != '\0'; k++) {
+                                    names[j][k] = names[j + 1][k];
+                                }
+                                names[j][k] = '\0';
+
+                                for (k = 0; tempName[k] != '\0'; k++) {
+                                    names[j + 1][k] = tempName[k];
+                                }
+                                names[j + 1][k] = '\0';
                             }
                         }
                     }
+
+                    for (int i = 0; i < leaderCount; i++) {
+                        cout << i + 1 << ". " << names[i] << " - " << scores[i] << " очков (" << corrects[i] << "/10)\n";
+                    }
                 }
+                break;
+            }
+            case 4: {
+                cout << "\nСпасибо за игру!\n";
+                break;
+            }
+            default: {
+                cout << "\nНеверный выбор! Попробуйте снова.\n";
+                break;
             }
         }
-    }while (choice != 4);
+        if (choice != 4 && choice != 2) {
+            cout << "\nНажмите Enter для продолжения...";
+            cin.ignore();
+            cin.get();
+            system("cls");
+        }
+
+    } while (choice != 4);
     return 0;
 }
