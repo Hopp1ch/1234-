@@ -6,9 +6,11 @@ int main()
     char names[10][50];
     int scores[10];
     int corrects[10];
+    int gamesPlayes[10];
     int leaderCount = 0;
 
     srand(time(0));
+
     int settings = 1;
     int choice;
 
@@ -16,11 +18,12 @@ int main()
         cout << "=== ТРЕНАЖЕР ===\n";
         cout << "1. Запуск\n";
         cout << "2. Настройки (сейчас: ";
+
         switch (settings) {
-        case 1: cout << "Лёгкая +"; break;
-        case 2: cout << "Средняя -"; break;
-        case 3: cout << "Высокая * и /"; break;
-        case 4: cout << "Очень высокая микс"; break;
+        case 1: cout << "Лёгкая + (10 очков)"; break;
+        case 2: cout << "Средняя - (20 очков)"; break;
+        case 3: cout << "Высокая * и / (30 очков)"; break;
+        case 4: cout << "Очень высокая микс (50 очков)"; break;
         }
 
         cout << ")\n";
@@ -29,18 +32,20 @@ int main()
         cout << "Выбор: ";
         cin >> choice;
         system("cls");
+
         switch (choice) {
             case 2: {
                 cout << "--- НАСТРОЙКИ ---\n";
-                cout << "1. Лёгкая (сложение, двузначные числа)\n";
-                cout << "2. Средняя (вычитание, двузначные числа)\n";
-                cout << "3. Высокая (умножение и деление, трезначные числа)\n";
-                cout << "4. Очень высокая (микс из всех операций, четырехзначные числа)\n";
+                cout << "1. Лёгкая (сложение, двузначные числа) - 10 очков\n";
+                cout << "2. Средняя (вычитание, двузначные числа) - 20 очков\n";
+                cout << "3. Высокая (умножение и деление, трезначные числа) - 30 очков\n";
+                cout << "4. Очень высокая (микс из всех операций, четырехзначные числа) - 50 очков\n";
                 cout << "Выберите сложность: ";
                 cin >> settings;
                 system("cls");
                 break;
             }
+
             case 1: {
                 char name[50];
                 cout << "\nВаше имя: ";
@@ -49,10 +54,24 @@ int main()
 
                 int correct = 0;
                 int score = 0;
+                int lives = 5;
+                int pointsPerQuestion;
+                int questionsAsked = 0;
 
-                cout << "\nНачинаем игру! 10 вопросов\n\n";
+                switch (settings) {
+                    case 1: { pointsPerQuestion = 10; break; }
+                    case 2: { pointsPerQuestion = 20; break; }
+                    case 3: { pointsPerQuestion = 30; break; }
+                    case 4: { pointsPerQuestion = 50; break; }
+                    default:pointsPerQuestion = 10;
+                }
 
-                for (int q = 1; q <= 10; q++) {
+                cout << "\nНачинаем игру!\n";
+                cout << "У вас " << lives << " жизней. Каждая ошибка отнимает 1 жизнь\n";
+                cout << "За каждый неправильный ответ вы получите " << pointsPerQuestion << " очков\n";
+                cout << "Игра закончится если у вас закончатся жизни или вы ответите на 10 вопросов\n\n";
+
+                while(lives>0&&questionsAsked<10){
                     int a, b, ans, user;
                     char op;
 
@@ -133,14 +152,19 @@ int main()
                     }
                     }
 
-                    cout << q << ". " << a << " " << op << " " << b << " = ";
+                    questionsAsked++;
+                    cout << "Вопрос " << questionsAsked << "<3 Жизни: " << lives << ") | ";
+                    cout << a << " " << op << " " << b << " = ";
                     cin >> user;
+
                     if (user == ans) {
-                        cout << "Верно! +10 очков\n";
+                        cout << "Верно! +"<<pointsPerQuestion<<" очков\n";
                         correct++;
-                        score += 10;
+                        score += pointsPerQuestion;
                     }
                     else {
+                        lives--;
+                        cout<<//доделать
                         cout << "Ошибка! Правильный ответ: " << ans << "\n";
                     }
                 }
